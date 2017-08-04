@@ -87,8 +87,10 @@
             <param name="record-template" value="${caller_id_number}.${target_domain}.${strftime(%Y-%m-%d-%H-%M-%S)}.wav"/>
             <!--<param name="NDLB-sendrecv-in-session" value="true"/>-->
             <!--<param name="NDLB-support-asterisk-missing-srtp-auth" value="true"/>-->
-            <!--<param name="require-secure-rtp" value="true"/>-->            
+            <!--<param name="require-secure-rtp" value="true"/>-->
             <!--<param name="auto-jitterbuffer-msec" value="120"/>-->
+            <!--<param name="rtcp-audio-interval-msec" value="5000"/>-->
+            <!--<param name="rtcp-video-interval-msec" value="5000"/>-->
 
 
             <!-- TLS -->
