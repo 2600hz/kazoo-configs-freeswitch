@@ -43,8 +43,8 @@
 
 
             <!-- SIP -->
-            <param name="sip-ip" value="$${local_ip_v4}"/>
-            <param name="ext-sip-ip" value="auto"/>
+            <param name="sip-ip" value="interface:ipv4/eth0"/>
+            <param name="ext-sip-ip" value="auto-nat"/>
             <param name="sip-port" value="11000"/>
             <!--<param name="outbound-proxy" value="127.0.0.1"/>-->
             <!--<param name="sip-domain" value="sip.2600hz.com"/>-->
@@ -66,7 +66,7 @@
 
 
             <!-- Media -->
-            <param name="rtp-ip" value="$${local_ip_v4}"/>
+            <param name="rtp-ip" value="interface:ipv4/eth0"/>
             <param name="ext-rtp-ip" value="auto"/>
             <param name="rtp-timer-name" value="soft"/>
             <param name="rtp-autoflush-during-bridge" value="true"/>
