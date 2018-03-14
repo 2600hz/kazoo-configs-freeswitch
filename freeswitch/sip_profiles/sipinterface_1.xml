@@ -7,15 +7,25 @@
             <param name="message-threads" value="10"/>
 
             <!-- ACL -->
-            <param name="auth-calls" value="true"/>
             <param name="apply-nat-acl" value="rfc1918.auto"/>
             <param name="apply-inbound-acl" value="trusted"/>
+            <param name="apply-inbound-acl" value="freeswitch"/>
             <param name="apply-proxy-acl" value="authoritative"/>
             <param name="local-network-acl" value="localnet.auto"/>
             <!--<param name="apply-register-acl" value="domains"/>-->
+            <param name="apply-candidate-acl" value="0.0.0.0/0"/>
+            <param name="apply-inbound-acl-x-token" value="X-FS-Auth-Token"/>
+            <param name="apply-proxy-acl-x-token" value="X-AUTH-Token"/>
+            <param name="use-port-for-acl-check" value="true"/>
+            
 
-            <param name="accept-blind-auth" value="true"/>
+            <param name="auth-calls" value="true"/>
+            <param name="auth-calls-acl-only" value="true"/>
+            <param name="accept-blind-auth" value="false"/>
             <param name="enforce-blind-auth-result" value="true"/>
+            <param name="keep-auth-caller-id" value="true"/>
+            <param name="auth-require-user" value="true"/>
+            
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
             <param name="fire-transfer-events" value="true"/>
 
@@ -191,8 +201,6 @@
             <param name="debug" value="info"/>
             <param name="sip-trace" value="true"/>
             <param name="log-auth-failures" value="true"/>
-            <param name="fire-transfer-events" value="true"/>
-            <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
         </settings>
         <gateways>
             <X-PRE-PROCESS cmd="include" data="/etc/freeswitch/gateways/*.xml"/>
