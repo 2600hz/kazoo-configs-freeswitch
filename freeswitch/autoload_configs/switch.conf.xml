@@ -16,6 +16,7 @@
     </cli-keybindings> 
 
     <settings>
+        <param name="event-heartbeat-interval" value="5"/>
         <param name="max-db-handles" value="50"/>
         <param name="db-handle-timeout" value="10"/>
         <param name="loglevel" value="debug"/>
