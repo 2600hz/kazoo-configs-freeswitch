@@ -1,7 +1,8 @@
 <configuration name="console.conf" description="Console Logger">
     <settings>
         <param name="colorize" value="true"/>
-        <param name="loglevel" value="info"/>
+        <param name="loglevel" value="debug"/>
+        <param name="uuid" value="true" />
     </settings>
 
     <mappings>
