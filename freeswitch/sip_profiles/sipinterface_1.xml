@@ -198,12 +198,9 @@
 
 
             <!-- Logging / Events -->
-            <param name="debug" value="info"/>
+            <param name="debug" value="debug"/>
             <param name="sip-trace" value="true"/>
             <param name="log-auth-failures" value="true"/>
         </settings>
-        <gateways>
-            <X-PRE-PROCESS cmd="include" data="/etc/freeswitch/gateways/*.xml"/>
-        </gateways>
     </profile>
 </include>
