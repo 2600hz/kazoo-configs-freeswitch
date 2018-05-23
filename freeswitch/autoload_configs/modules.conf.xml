@@ -19,9 +19,11 @@
         <load module="mod_loopback"/>
 
         <!-- Applications -->
+        <load module="mod_av"/>
         <load module="mod_commands"/>
         <load module="mod_conference"/>
         <load module="mod_dptools"/>
+        <load module="mod_expr"/>
         <load module="mod_http_cache"/>
 
         <!-- Codec Interfaces -->
@@ -30,9 +32,6 @@
         <load module="mod_g723_1"/>
         <load module="mod_amr"/>
         <load module="mod_ilbc"/>
-        <load module="mod_speex"/>
-        <load module="mod_h26x"/>
-        <load module="mod_celt"/>
         <load module="mod_opus"/>
 
         <!-- File Format Interfaces -->
