@@ -5,5 +5,6 @@
     <param name="default-max-age" value="86400"/>
     <param name="prefetch-thread-count" value="8"/>
     <param name="prefetch-queue-size" value="100"/>
+    <param name="ssl-cacert" value="/etc/pki/tls/certs/ca-bundle.crt"/>
   </settings>
 </configuration>
