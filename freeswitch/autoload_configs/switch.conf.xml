@@ -17,7 +17,7 @@
 
     <settings>
         <param name="event-heartbeat-interval" value="5"/>
-        <param name="max-db-handles" value="50"/>
+        <param name="max-db-handles" value="500"/>
         <param name="db-handle-timeout" value="10"/>
         <param name="loglevel" value="debug"/>
         <param name="dump-cores" value="yes"/>
@@ -47,5 +47,8 @@
         <param name="rtp-enable-zrtp" value="true"/>
         <!--<param name="core-db-dsn" value="fs_core"/>-->
         <!--<param name="core-dbtype" value="MSSQL"/>-->
+        <param name="dialplan-timestamps" value="true" />
+        <param name="initial-event-threads" value="10"/>
+        
     </settings>
 </configuration>
