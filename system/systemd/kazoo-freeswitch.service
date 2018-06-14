@@ -17,12 +17,11 @@ IOSchedulingPriority=2
 CPUSchedulingPolicy=rr
 CPUSchedulingPriority=89
 UMask=0007
-ExecStartPre=setcap 'cap_net_bind_service,cap_sys_nice=+ep' /usr/bin/freeswitch
 ExecStartPre=/usr/sbin/kazoo-freeswitch prepare
 ExecStart=/usr/sbin/kazoo-freeswitch start -nc -nf
 ExecReload=/usr/bin/kill -HUP $MAINPID
 Restart=on-abort
-PIDFile=/run/freeswitch/freeswitch.pid
+PIDFile=/var/run/freeswitch/freeswitch.pid
 
 [Install]
 WantedBy=multi-user.target
