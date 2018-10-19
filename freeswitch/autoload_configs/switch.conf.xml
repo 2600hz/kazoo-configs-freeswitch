@@ -47,4 +47,7 @@
         <!--<param name="core-db-dsn" value="fs_core"/>-->
         <!--<param name="core-dbtype" value="MSSQL"/>-->
     </settings>
+    <variables>
+        <variable name="loopback_initial_codec" value="PCMU"/>
+    </variables>
 </configuration>
