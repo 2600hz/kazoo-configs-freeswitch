@@ -49,5 +49,6 @@
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
+        <variable name="conference_force_channels" value="2"/>
     </variables>
 </configuration>
