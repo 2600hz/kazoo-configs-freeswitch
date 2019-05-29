@@ -3,19 +3,30 @@
     <profile name="sipinterface_1">
 
         <settings>
-            <!-- Preformance -->
+            <!-- performance -->
             <param name="message-threads" value="10"/>
 
             <!-- ACL -->
-            <param name="auth-calls" value="true"/>
             <param name="apply-nat-acl" value="rfc1918.auto"/>
             <param name="apply-inbound-acl" value="trusted"/>
+            <param name="apply-inbound-acl" value="freeswitch"/>
             <param name="apply-proxy-acl" value="authoritative"/>
             <param name="local-network-acl" value="localnet.auto"/>
             <!--<param name="apply-register-acl" value="domains"/>-->
+            <param name="apply-candidate-acl" value="0.0.0.0/0"/>
+            <param name="apply-inbound-acl-x-token" value="X-FS-Auth-Token"/>
+            <param name="apply-proxy-acl-x-token" value="X-AUTH-Token"/>
+            <param name="use-port-for-acl-check" value="true"/>
+            
 
-            <param name="accept-blind-auth" value="true"/>
+            <param name="auth-calls" value="true"/>
+            <param name="auth-calls-acl-only" value="true"/>
+            
+            <param name="accept-blind-auth" value="false"/>
             <param name="enforce-blind-auth-result" value="true"/>
+            <param name="keep-auth-caller-id" value="false"/>
+            <param name="auth-require-user" value="true"/>
+            
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
             <param name="fire-transfer-events" value="true"/>
 
@@ -44,7 +55,7 @@
 
             <!-- SIP -->
             <param name="sip-ip" value="$${local_ip_v4}"/>
-            <param name="ext-sip-ip" value="auto"/>
+            <param name="ext-sip-ip" value="$${local_ip_v4}"/>
             <param name="sip-port" value="11000"/>
             <!--<param name="outbound-proxy" value="127.0.0.1"/>-->
             <!--<param name="sip-domain" value="sip.2600hz.com"/>-->
@@ -53,7 +64,7 @@
             <param name="enable-100rel" value="false"/>
             <param name="max-proceeding" value="1000"/>
             <!--<param name="max-calls" value="250"/>-->
-            <!--<param name="track-calls" value="true"/>-->
+            <param name="track-calls" value="true"/>
             <param name="inbound-use-callid-as-uuid" value="true"/>
             <param name="outbound-use-uuid-as-callid" value="true"/>
             <!--<param name="bind-params" value="transport=udp"/>-->
@@ -67,7 +78,7 @@
 
             <!-- Media -->
             <param name="rtp-ip" value="$${local_ip_v4}"/>
-            <param name="ext-rtp-ip" value="auto"/>
+            <param name="ext-rtp-ip" value="$${local_ip_v4}"/>
             <param name="rtp-timer-name" value="soft"/>
             <param name="rtp-autoflush-during-bridge" value="true"/>
             <param name="rtp-rewrite-timestamps" value="false"/>
@@ -156,9 +167,9 @@
 
 
             <!-- CID -->
-            <!--<param name="cid-in-1xx" value="false"/>-->
-            <!--<param name="caller-id-type" value="rpid"/>-->
-            <!--<param name="pass-callee-id" value="false"/>-->
+            <param name="cid-in-1xx" value="true"/>
+            <param name="caller-id-type" value="rpid"/>
+            <param name="pass-callee-id" value="true"/>
 
 
             <!-- Subscription and Presence -->
@@ -188,14 +199,9 @@
 
 
             <!-- Logging / Events -->
-            <param name="debug" value="info"/>
+            <param name="debug" value="debug"/>
             <param name="sip-trace" value="true"/>
             <param name="log-auth-failures" value="true"/>
-            <param name="fire-transfer-events" value="true"/>
-            <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
         </settings>
-        <gateways>
-            <X-PRE-PROCESS cmd="include" data="/etc/freeswitch/gateways/*.xml"/>
-        </gateways>
     </profile>
 </include>

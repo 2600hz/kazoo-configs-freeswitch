@@ -60,6 +60,7 @@ start() {
 
 stop() {
 	cd ${HOME}
+	fs_cli -x hupall > /dev/null 2>&1
 	${BIN_FILE} -stop > /dev/null 2>&1
 	killall freeswitch
 	RETVAL=$?
