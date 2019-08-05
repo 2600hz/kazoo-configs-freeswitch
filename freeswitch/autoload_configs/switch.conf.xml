@@ -51,7 +51,7 @@
         <param name="initial-event-threads" value="10"/>
         <param name="caller-profile-soft-variables-uses-prefix" value="true"/>                
         <param name="caller-profile-soft-lookup-values" value="true"/>
-        <param name="event-channel-key-separator" value="::"/>
+        <param name="event-channel-enable-hierarchy-deliver" value="true"/>        
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
