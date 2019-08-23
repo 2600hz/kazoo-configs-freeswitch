@@ -35,8 +35,9 @@
     <X-PRE-PROCESS cmd="set" data="send_silence_when_idle=400"/>
     <X-PRE-PROCESS cmd="set" data="sdp_m_per_ptime=false"/>
     
-    <X-PRE-PROCESS cmd="set" data="rtcp_mux=false"/>
-    <X-PRE-PROCESS cmd="set" data="rtcp_mux_auto_detect=true"/>
+    <!--  rtcp enabled by default -->
+    <z-PRE-PROCESS cmd="set" data="rtcp_mux=false"/>
+    <z-PRE-PROCESS cmd="set" data="rtcp_mux_auto_detect=true"/>
     
     <X-PRE-PROCESS cmd="set" data="sofia_suppress_url_encoding=true"/>
     <X-PRE-PROCESS cmd="set" data="codecs=OPUS,VP8,H263,H264,G7221@32000h,G7221@16000h,G722,PCMU,PCMA,G729,GSM,Speex"/>
