@@ -34,6 +34,11 @@
     <X-PRE-PROCESS cmd="set" data="recordings_dir=/tmp/"/>
     <X-PRE-PROCESS cmd="set" data="send_silence_when_idle=400"/>
     <X-PRE-PROCESS cmd="set" data="sdp_m_per_ptime=false"/>
+
+    <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers=false"/>
+    <X-PRE-PROCESS cmd="set" data="disable_app_log=false" />
+
+    <X-PRE-PROCESS cmd="set" data="Call-Debug=true"/>
     
     <!--  rtcp enabled by default -->
     <z-PRE-PROCESS cmd="set" data="rtcp_mux=false"/>
