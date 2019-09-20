@@ -8,10 +8,9 @@
 
             <!-- ACL -->
             <param name="apply-nat-acl" value="rfc1918.auto"/>
-            <param name="apply-inbound-acl" value="trusted"/>
             <param name="apply-inbound-acl" value="freeswitch"/>
             <param name="apply-proxy-acl" value="authoritative"/>
-            <param name="local-network-acl" value="localnet.auto"/>
+            <param name="local-network-acl" value="127.0.0.1/32"/>
             <!--<param name="apply-register-acl" value="domains"/>-->
             <param name="apply-candidate-acl" value="0.0.0.0/0"/>
             <param name="apply-inbound-acl-x-token" value="X-FS-Auth-Token"/>
@@ -53,9 +52,13 @@
             <param name="disable-transfer" value="false"/>
 
 
-            <!-- SIP -->
+            <!-- IPs -->
             <param name="sip-ip" value="$${local_ip_v4}"/>
             <param name="ext-sip-ip" value="$${local_ip_v4}"/>
+            <param name="rtp-ip" value="$${local_ip_v4}"/>
+            <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
+
+            <!-- SIP -->
             <param name="sip-port" value="11000"/>
             <!--<param name="outbound-proxy" value="127.0.0.1"/>-->
             <!--<param name="sip-domain" value="sip.2600hz.com"/>-->
@@ -77,8 +80,6 @@
 
 
             <!-- Media -->
-            <param name="rtp-ip" value="$${local_ip_v4}"/>
-            <param name="ext-rtp-ip" value="$${local_ip_v4}"/>
             <param name="rtp-timer-name" value="soft"/>
             <param name="rtp-autoflush-during-bridge" value="true"/>
             <param name="rtp-rewrite-timestamps" value="false"/>
