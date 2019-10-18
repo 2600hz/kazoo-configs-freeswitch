@@ -72,6 +72,6 @@ package:
 metapackage:
   -
     name: meta-kazoo-freeswitch
-    package: kazoo-configs-haproxy
+    package: kazoo-configs-freeswitch
     type: required
     branch: 'master'
