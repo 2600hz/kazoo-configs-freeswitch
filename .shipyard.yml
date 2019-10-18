@@ -1,5 +1,5 @@
 name: kazoo-configs-freeswitch
-base_branch: origin/master
+base_branch: origin/4.3
 base_core: null
 template: spec.tmpl
 package:
@@ -74,4 +74,4 @@ metapackage:
     name: meta-kazoo-freeswitch
     package: kazoo-configs-haproxy
     type: required
-    branch: 'master'
+    branch: '4.3'
