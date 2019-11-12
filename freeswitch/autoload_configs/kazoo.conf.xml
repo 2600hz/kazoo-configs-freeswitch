@@ -4,8 +4,6 @@
 	<settings>
 		<param name="listen-ip" value="0.0.0.0" />
 		<param name="listen-port" value="8031" />
-		<!--<param name="cookie-file" value="/etc/freeswitch/autoload_configs/.erlang.cookie" 
-			/> -->
 		<param name="cookie" value="change_me" />
 		<param name="shortname" value="false" />
 		<param name="nodename" value="freeswitch" />
@@ -17,23 +15,10 @@
 		<param name="event-stream-framing" value="4" />
 
 		<param name="legacy-events" value="true" />
+		<param name="expand-headers-on-fetch" value="true" />
 
 	</settings>
 
-	<tweaks>
-		<tweak name="interaction-id" value="false" />
-		<tweak name="export-vars" value="false" />
-		<tweak name="switch-uri" value="false" />
-		<tweak name="replaces-call-id" value="false" />
-		<tweak name="loopback-vars" value="false" />
-		<tweak name="caller-id" value="false" />
-		<tweak name="transfers" value="false" />
-		<tweak name="bridge" value="false" />
-		<tweak name="bridge-replaces-aleg" value="false" />
-		<tweak name="bridge-replaces-call-id" value="false" />
-		<tweak name="bridge-variables" value="false" />
-
-		<tweak name="restore-caller-id-on-blind-xfer" value="false" />
-	</tweaks>
+	<tweaks default="false"/>
 
 </configuration>
