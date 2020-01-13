@@ -42,8 +42,6 @@ start() {
 		return
 	fi
 
-	/usr/bin/epmd -daemon
-
 	set -- ${BIN_FILE} ${FREESWITCH_ARGS} ${FREESWITCH_PARAMS} "$@"
 	if [ "$(whoami)" == "${USER}" ]; then
 		exec "$@"
