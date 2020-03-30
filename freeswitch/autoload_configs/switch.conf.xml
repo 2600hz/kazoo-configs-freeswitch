@@ -46,6 +46,7 @@
         <param name="rtp-enable-zrtp" value="true"/>
         <!--<param name="core-db-dsn" value="fs_core"/>-->
         <!--<param name="core-dbtype" value="MSSQL"/>-->
+        <param name="use-get-hostname-by-name" value="true"/>
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
