@@ -45,7 +45,7 @@
       <!-- required for kazoo auth -->
       <param name="custom-auth" value="true"/>
 
-      <param name="dialplan" value="kinline,XML"/>
+      <param name="dialplan" value="kinline,XML:$${conf_dir}/autoload_configs/verto.screenshare.dialplan.xml,XML"/>
 
     </profile>
 
