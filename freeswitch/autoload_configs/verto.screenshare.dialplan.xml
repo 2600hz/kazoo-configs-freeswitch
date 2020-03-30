@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<document>
+<section name="dialplan" description="Verto Regex/XML Dialplan">
+<context name="context_2">
+
+<extension name="verto_screen_sharing">
+  <condition field="destination_number" expression="^(.*)-screen$">
+    <action application="answer"/>
+    <action application="set" data="conference_member_flags=join-vid-floor"/>
+    <action application="conference" data="$1"/>
+  </condition>
+</extension>
+
+</context>
+</section>
+</document>
