@@ -1,0 +1,12 @@
+<configuration name="loopback.conf" description="Loopback Endpoint">
+    <settings>
+        <param name="early-set-loopback-id" value="true"/>
+        <param name="fire-bowout-on-bridge" value="true"/>
+        <param name="ignore-channel-ready" value="true"/>
+        <param name="bowout-hangup-cause" value="BOWOUT"/>
+        <param name="bowout-controlled-hangup" value="true"/>
+        <param name="bowout-transfer-recording" value="true"/>
+        <param name="bowout-disable-on-inner-bridge" value="true"/>
+    </settings>
+
+</configuration>
