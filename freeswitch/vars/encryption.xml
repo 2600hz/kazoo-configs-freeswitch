@@ -1,0 +1,10 @@
+<include>
+
+    <z-PRE-PROCESS cmd="set" data="rtp_sdes_suites=AES_CM_128_HMAC_SHA1_80:AES_CM_128_HMAC_SHA1_32"/>
+    <z-PRE-PROCESS cmd="set" data="rtp_secure_media_suites=AES_CM_128_HMAC_SHA1_80:AES_CM_128_HMAC_SHA1_32"/>
+    <X-PRE-PROCESS cmd="set" data="rtp_sdes_suites=AES_CM_128_HMAC_SHA1_80"/>
+    <X-PRE-PROCESS cmd="set" data="rtp_secure_media_suites=AES_CM_128_HMAC_SHA1_80"/>
+
+
+</include>
+

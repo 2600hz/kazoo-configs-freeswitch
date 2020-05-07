@@ -3,34 +3,42 @@
     <profile name="sipinterface_1">
 
         <settings>
-            <!-- Preformance -->
+            <!-- Performance -->
             <param name="message-threads" value="10"/>
 
             <!-- ACL -->
-            <param name="auth-calls" value="true"/>
             <param name="apply-nat-acl" value="rfc1918.auto"/>
             <param name="apply-inbound-acl" value="trusted"/>
+            <param name="apply-inbound-acl" value="freeswitch"/>
             <param name="apply-proxy-acl" value="authoritative"/>
             <param name="local-network-acl" value="localnet.auto"/>
             <!--<param name="apply-register-acl" value="domains"/>-->
-
-            <param name="accept-blind-auth" value="true"/>
-            <param name="enforce-blind-auth-result" value="true"/>
-            <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
-            <param name="fire-transfer-events" value="true"/>
-
+            <param name="apply-candidate-acl" value="0.0.0.0/0"/>
+            <param name="apply-inbound-acl-x-token" value="X-FS-Auth-Token"/>
+            <param name="apply-proxy-acl-x-token" value="X-AUTH-Token"/>
+            <param name="use-port-for-acl-check" value="true"/>
+                     
             <!-- Authentication -->
+            <param name="auth-calls" value="true"/>
+            <param name="auth-calls-acl-only" value="true"/>
+            <param name="auth-require-user" value="true"/>
             <param name="challenge-realm" value="auto_from"/>
-            <param name="multiple-registrations" value="false"/>
-            <!--<param name="max-registrations-per-extension" value="1"/>-->
             <param name="nonce-ttl" value="86400"/>
-            <param name="disable-register" value="false"/>
-            <!--<param name="NDLB-broken-auth-hash" value="true"/>-->
-            <param name="inbound-reg-force-matching-username" value="true"/>
             <param name="auth-all-packets" value="false"/>
             <!--<param name="user-agent-filter" value=""/>-->
+
+            <!-- Registration -->
+            <param name="multiple-registrations" value="false"/>
+            <!--<param name="max-registrations-per-extension" value="1"/>-->
+            <param name="disable-register" value="true"/>
+            <param name="inbound-reg-force-matching-username" value="true"/>
             <!--<param name="force-register-domain" value="sip.2600hz.com"/>-->
             <!--<param name="force-register-db-domain" value="sip.2600hz.com"/>-->
+
+            <!-- BLIND -->
+            <param name="accept-blind-auth" value="false"/>
+            <param name="enforce-blind-auth-result" value="true"/>
+            <param name="accept-blind-reg" value="false"/>
 
 
             <!-- Routing -->
@@ -44,16 +52,18 @@
 
             <!-- SIP -->
             <param name="sip-ip" value="$${local_ip_v4}"/>
-            <param name="ext-sip-ip" value="auto"/>
+            <param name="ext-sip-ip" value="$${local_ip_v4}"/>
             <param name="sip-port" value="11000"/>
+
             <!--<param name="outbound-proxy" value="127.0.0.1"/>-->
             <!--<param name="sip-domain" value="sip.2600hz.com"/>-->
-            <!--<param name="contact-user" value="sip.2600hz.com"/>-->
+            <!--<param name="contact-user" value="2600hz"/>-->
+
             <param name="user-agent-string" value="2600hz"/>
             <param name="enable-100rel" value="false"/>
-            <param name="max-proceeding" value="1000"/>
+            <param name="max-proceeding" value="5000"/>
             <!--<param name="max-calls" value="250"/>-->
-            <!--<param name="track-calls" value="true"/>-->
+            <param name="track-calls" value="true"/>
             <param name="inbound-use-callid-as-uuid" value="true"/>
             <param name="outbound-use-uuid-as-callid" value="true"/>
             <!--<param name="bind-params" value="transport=udp"/>-->
@@ -63,15 +73,16 @@
             <!--<param name="disable-srv" value="false" />-->
             <!--<param name="disable-naptr" value="false" />-->
             <!--<param name="enable-3pcc" value="true"/>-->
+            <param name="parse-all-invite-headers" value="true"/>
 
 
             <!-- Media -->
             <param name="rtp-ip" value="$${local_ip_v4}"/>
-            <param name="ext-rtp-ip" value="auto"/>
+            <param name="ext-rtp-ip" value="$${local_ip_v4}"/>
             <param name="rtp-timer-name" value="soft"/>
             <param name="rtp-autoflush-during-bridge" value="true"/>
             <param name="rtp-rewrite-timestamps" value="false"/>
-            <param name="rtp-enable-zrtp" value="true"/>
+            <!-- <param name="rtp-enable-zrtp" value="true"/> -->
             <!--<param name="disable-rtp-auto-adjust" value="true"/>-->
             <!--<param name="rtp-autofix-timing" value="false"/>-->
             <!--<param name="auto-rtp-bugs" data="clear"/>-->
@@ -85,12 +96,10 @@
             <!--<param name="vad" value="out"/>-->
             <param name="record-path" value="$${recordings_dir}"/>
             <param name="record-template" value="${caller_id_number}.${target_domain}.${strftime(%Y-%m-%d-%H-%M-%S)}.wav"/>
-            <!--<param name="NDLB-sendrecv-in-session" value="true"/>-->
-            <!--<param name="NDLB-support-asterisk-missing-srtp-auth" value="true"/>-->
             <!--<param name="require-secure-rtp" value="true"/>-->
             <!--<param name="auto-jitterbuffer-msec" value="120"/>-->
-            <!--<param name="rtcp-audio-interval-msec" value="5000"/>-->
-            <!--<param name="rtcp-video-interval-msec" value="5000"/>-->
+            <!--<param name="rtcp-audio-interval-msec" value="passthru"/> -->
+            <!--<param name="rtcp-audio-interval-msec" value="5000"/> -->
 
 
             <!-- TLS -->
@@ -108,6 +117,15 @@
             <param name="tls-verify-in-subjects" value=""/>
             <param name="tls-version" value="$${sip_tls_version}"/>-->
 
+            <!--  NDLB -->
+            <param name="NDLB-allow-nondup-sdp" value="true"/>
+            <!--<param name="NDLB-sendrecv-in-session" value="true"/>-->
+            <!--<param name="NDLB-support-asterisk-missing-srtp-auth" value="true"/>-->
+            <!--<param name="NDLB-allow-bad-iananame" value="true"/>-->
+            <!--<param name="NDLB-force-rport" value="safe"/>-->
+            <!--<param name="NDLB-received-in-nat-reg-contact" value="true"/>-->
+            <!--<param name="NDLB-funny-stun" value="true"/>-->
+            <!--<param name="NDLB-broken-auth-hash" value="true"/>-->
 
             <!-- DTMF -->
             <param name="dtmf-duration" value="960"/>
@@ -125,26 +143,22 @@
             <param name="inbound-late-negotiation" value="true"/>
             <!--<param name="bitpacking" value="aal2"/> -->
             <param name="disable-transcoding" value="false"/>
-            <!--<param name="NDLB-allow-bad-iananame" value="true"/>-->
             <param name="t38-passthru" value="true"/>
 
 
             <!-- NAT -->
             <!--<param name="nat-options-ping" value="true"/>-->
-            <param name="all-reg-options-ping" value="true"/>
+            <!--<param name="all-reg-options-ping" value="true"/>-->
             <!--<param name="unregister-on-options-fail" value="true"/>-->
             <!--<param name="aggressive-nat-detection" value="true"/>-->
-            <!--<param name="NDLB-force-rport" value="safe"/>-->
-            <!--<param name="NDLB-received-in-nat-reg-contact" value="true"/>-->
-            <!--<param name="NDLB-funny-stun" value="true"/>-->
             <!--<param name="stun-enabled" value="true"/>-->
             <!--<param name="stun-auto-disable" value="true"/>-->
 
 
             <!-- Session Timers -->
             <param name="enable-timer" value="false"/>
-            <param name="rtp-timeout-sec" value="3600"/>
-            <param name="rtp-hold-timeout-sec" value="3600"/>
+            <param name="rtp-timeout-sec" value="36000"/>
+            <param name="rtp-hold-timeout-sec" value="36000"/>
             <param name="minimum-session-expires" value="60"/>
             <!--<param name="sip-force-expires" value="600"/>-->
             <!--<param name="sip-expires-max-deviation" value="120"/>-->
@@ -156,9 +170,9 @@
 
 
             <!-- CID -->
-            <!--<param name="cid-in-1xx" value="false"/>-->
-            <!--<param name="caller-id-type" value="rpid"/>-->
-            <!--<param name="pass-callee-id" value="false"/>-->
+            <param name="cid-in-1xx" value="true"/>
+            <param name="caller-id-type" value="rpid"/>
+            <param name="pass-callee-id" value="true"/>
 
 
             <!-- Subscription and Presence -->
@@ -168,7 +182,7 @@
             <!--<param name="dbname" value="share_presence"/>-->
             <!--<param name="presence-hosts" value=".2600hz.org"/>-->
             <!--<param name="force-subscription-expires" value="600"/>-->
-            <param name="send-message-query-on-register" value="false"/>
+            <!--<param name="send-message-query-on-register" value="false"/>-->
             <!--<param name="send-presence-on-register" value="true"/> -->
             <!--<param name="force-publish-expires" value="true"/>-->
             <!--<param name="forward-unsolicited-mwi-notify" value="true"/>-->
@@ -188,14 +202,12 @@
 
 
             <!-- Logging / Events -->
-            <param name="debug" value="info"/>
-            <param name="sip-trace" value="true"/>
+            <param name="debug" value="debug"/>
+            <param name="sip-trace" value="false"/>
             <param name="log-auth-failures" value="true"/>
-            <param name="fire-transfer-events" value="true"/>
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
+            <param name="fire-transfer-events" value="true"/>
         </settings>
-        <gateways>
-            <X-PRE-PROCESS cmd="include" data="/etc/freeswitch/gateways/*.xml"/>
-        </gateways>
     </profile>
 </include>
+

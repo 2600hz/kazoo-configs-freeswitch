@@ -46,6 +46,15 @@
         <param name="rtp-enable-zrtp" value="true"/>
         <!--<param name="core-db-dsn" value="fs_core"/>-->
         <!--<param name="core-dbtype" value="MSSQL"/>-->
+
+        <param name="use-get-hostname-by-name" value="true"/>
+        <param name="dialplan-timestamps" value="true" />
+        <param name="events-use-dispatch" value="false"/>
+        <param name="caller-profile-soft-variables-uses-prefix" value="true"/>                
+        <param name="caller-profile-soft-lookup-values" value="true"/>
+        <param name="event-channel-enable-hierarchy-deliver" value="true"/>
+        <param name="event-channel-hierarchy-deliver-once" value="true"/>
+        <param name="event-channel-log-undeliverable-json" value="true"/>
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
