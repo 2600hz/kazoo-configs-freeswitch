@@ -16,7 +16,7 @@ CFG_FILE=${FS_CONFIG:-/etc/kazoo/freeswitch}
 export HOME=${FS_HOME:-/var/lib/kazoo-freeswitch}
 
 if [ -z "${FREESWITCH_ARGS}" ]; then
-	FREESWITCH_ARGS="-nonat -conf ${CFG_FILE} -run /var/run/freeswitch -db /var/lib/kazoo-freeswitch/db -log /var/log/freeswitch -cache /var/lib/kazoo-freeswitch/cache -sounds /usr/share/kazoo-freeswitch/sounds -storage /var/lib/kazoo-freeswitch/storage -gethostbyname"
+	FREESWITCH_ARGS="-nonat -conf ${CFG_FILE} -run /var/run/freeswitch -db /var/lib/kazoo-freeswitch/db -log /var/log/freeswitch -cache /var/lib/kazoo-freeswitch/cache -sounds /usr/share/kazoo-freeswitch/sounds -storage /var/lib/kazoo-freeswitch/storage"
 fi
 
 prepare() {
