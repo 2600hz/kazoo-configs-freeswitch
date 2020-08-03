@@ -54,12 +54,10 @@
             <param name="sip-ip" value="$${local_ip_v4}"/>
             <param name="ext-sip-ip" value="$${local_ip_v4}"/>
             <param name="sip-port" value="11000"/>
-
             <!--<param name="outbound-proxy" value="127.0.0.1"/>-->
             <!--<param name="sip-domain" value="sip.2600hz.com"/>-->
             <!--<param name="contact-user" value="2600hz"/>-->
-
-            <param name="user-agent-string" value="2600hz"/>
+            <param name="user-agent-string" value="2600Hz"/>
             <param name="enable-100rel" value="false"/>
             <param name="max-proceeding" value="5000"/>
             <!--<param name="max-calls" value="250"/>-->
@@ -202,8 +200,8 @@
 
 
             <!-- Logging / Events -->
-            <param name="debug" value="debug"/>
-            <param name="sip-trace" value="false"/>
+            <param name="debug" value="info"/>
+            <param name="sip-trace" value="true"/>
             <param name="log-auth-failures" value="true"/>
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
             <param name="fire-transfer-events" value="true"/>
