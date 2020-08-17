@@ -1,7 +1,7 @@
 <include>
     <X-PRE-PROCESS cmd="set" data="disable_system_api_commands=true"/>
     
-    <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://default"/>    
+    <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://default"/>
     
     <X-PRE-PROCESS cmd="set" data="ignore_display_updates=false"/>
     <X-PRE-PROCESS cmd="set" data="recordings_dir=/tmp/"/>
@@ -21,4 +21,3 @@
     <z-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
 
 </include>
-
