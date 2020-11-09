@@ -1,0 +1,3 @@
+<connections local-zone="$${kz_amqp_zone}">
+    <X-PRE-PROCESS cmd="include" data="../connections/*.xml"/>
+</connections>

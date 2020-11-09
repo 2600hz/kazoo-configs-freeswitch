@@ -1,0 +1,19 @@
+<include>
+
+        <connection name="up">
+            <param name="hostname" value="$${kz_amqp_host}" />
+            <param name="port" value="$${kz_amqp_port}" />
+            <!--<param name="virtualhost" value="$${kz_amqp_vhost}" />-->
+            <param name="username" value="$${kz_amqp_user}" />
+            <param name="password" value="$${kz_amqp_pass}" />
+            <param name="zone" value="$${kz_amqp_zone}" />
+
+            <property name="zone" value="$${kz_amqp_zone}" />
+            <property name="primary" value="true" />
+            <property name="is-federated" value="false" />
+            <property name="is-local" value="true" />
+            <property name="is-bootstrap" value="true" />
+
+        </connection>
+
+</include>

@@ -1,0 +1,11 @@
+<include>
+
+    <X-PRE-PROCESS cmd="env-set" data="kz_amqp_host=$KZ_AMQP_HOST"/>
+    <X-PRE-PROCESS cmd="env-set" data="kz_amqp_port=$KZ_AMQP_PORT"/>
+    <z-PRE-PROCESS cmd="env-set" data="kz_amqp_vhost=$KZ_AMQP_VHOST"/>
+    <X-PRE-PROCESS cmd="env-set" data="kz_amqp_user=$KZ_AMQP_USER"/>
+    <X-PRE-PROCESS cmd="env-set" data="kz_amqp_pass=$KZ_AMQP_PASS"/>
+    <X-PRE-PROCESS cmd="env-set" data="kz_amqp_zone=$KZ_AMQP_ZONE"/>
+
+</include>
+
