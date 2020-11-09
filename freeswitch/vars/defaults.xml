@@ -10,10 +10,9 @@
 
     <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers=K-|P-Test"/>
     <X-PRE-PROCESS cmd="set" data="disable_app_log=false" />
-    <z-PRE-PROCESS cmd="set" data="Call-Debug=true"/>
 
     <X-PRE-PROCESS cmd="set" data="sofia_suppress_url_encoding=true"/>
-    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,H264,VP8,G7221@32000h,G7221@16000h,G722,PCMU,PCMA,G729,GSM,Speex"/>
+    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,H264,VP8,VP9,G7221@32000h,G7221@16000h,G722,PCMU,PCMA,G729,GSM,Speex"/>
 
     <Z-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/callie"/>
     <X-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/allison"/>
