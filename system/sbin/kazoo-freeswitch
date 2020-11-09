@@ -8,6 +8,10 @@ if [ -f /etc/sysconfig/freeswitch ]; then
 	. /etc/sysconfig/freeswitch
 fi
 
+if [ -f /etc/kazoo/freeswitch/env ]; then
+	. /etc/kazoo/freeswitch/env
+fi
+
 RETVAL=1
 USER=${FS_USER:-freeswitch}
 BIN_FILE=${FS_BIN:-/usr/bin/freeswitch}

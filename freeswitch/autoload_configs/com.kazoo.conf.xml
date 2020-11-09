@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="com.kazoo.conf" description="Module to communicate with the Kazoo platform">
+    <settings>
+        <param name="shortname" value="false" />
+        <param name="nodename" value="freeswitch" />
+    </settings>
+
+    <X-PRE-PROCESS cmd="include" data="../kazoo/includes/*.xml"/>
+
+</configuration>

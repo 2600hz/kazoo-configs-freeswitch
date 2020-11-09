@@ -58,5 +58,6 @@
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
+        <variable name="redirect-mod-load-to-com-module" value="true"/>
     </variables>
 </configuration>
