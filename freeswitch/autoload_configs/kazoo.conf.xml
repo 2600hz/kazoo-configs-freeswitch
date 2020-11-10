@@ -10,7 +10,7 @@
         <param name="event-stream-preallocate" value="32768"/>
         <param name="receive-msg-preallocate" value="32768"/>
         <param name="node-worker-threads" value="5"/>
-        <param name="receive-timeout" value="1"/>
+        <param name="receive-timeout" value="200"/>
         <param name="event-stream-framing" value="4"/>
     </settings>
 </configuration>
