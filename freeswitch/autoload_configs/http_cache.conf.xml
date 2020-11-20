@@ -6,5 +6,6 @@
     <param name="prefetch-thread-count" value="8"/>
     <param name="prefetch-queue-size" value="100"/>
     <param name="ssl-cacert" value ""/>
+    <param name="enable-file-formats" value="true"/>
   </settings>
 </configuration>
