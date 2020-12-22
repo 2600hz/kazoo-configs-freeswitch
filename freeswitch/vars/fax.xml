@@ -1,6 +1,6 @@
 <include>
 
     <X-PRE-PROCESS cmd="set" data="execute_on_fax_result_zz=hangup"/>
-    <X-PRE-PROCESS cmd="set" data="fax_enable_t38=true"/>
+    <X-PRE-PROCESS cmd="set" data="fax_enable_t38=false"/>
 
 </include>
