@@ -48,7 +48,6 @@
             <!--<param name="full-id-in-dialplan" value="false"/>-->
             <param name="manual-redirect" value="true"/>
             <param name="disable-transfer" value="false"/>
-            <param name="deny-semi-attended-xfer" value="true"/>
 
 
             <!-- SIP -->
