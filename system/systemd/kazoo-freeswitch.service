@@ -3,6 +3,7 @@ Description=FreeSWITCH Configured for Kazoo
 After=syslog.target network-online.target
 
 [Service]
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_SYS_NICE
 User=freeswitch
 Group=daemon
 PermissionsStartOnly=true
