@@ -46,10 +46,6 @@ package:
 
       mkdir -p %{buildroot}/usr/lib/systemd/system
       cp system/systemd/* %{buildroot}/usr/lib/systemd/system
-    post: |
-        if [ -x "/usr/bin/freeswitch" ]; then
-            setcap 'cap_net_bind_service,cap_sys_nice=+ep' /usr/bin/freeswitch
-        fi
     files:
       doc:
         - CHANGELOG
