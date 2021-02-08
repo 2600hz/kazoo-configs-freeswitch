@@ -1,4 +1,4 @@
-<configuration name="sofia.conf" description="sofia Endpoint"> 
+<configuration name="sofia.conf" description="sofia Endpoint">
     <global_settings>
         <param name="log-level" value="info"/>
         <param name="tracelevel" value="debug"/>
