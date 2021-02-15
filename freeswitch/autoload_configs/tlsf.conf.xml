@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="tlsf.conf" description="Two Level Segregated Fit memory allocator">
+    <settings>
+
+        <param name="enabled" value="true" />
+
+        <param name="shrink-enabled" value="true" />
+        <param name="shrink-interval" value="60" />
+        <param name="shrink-mem-size-condition" value="0.60" />
+
+        <param name="initial-pool-size" value="64" />
+        <param name="pool-size" value="64" />
+
+        <param name="initial-pools" value="1" />
+
+        <param name="bind-cjson-allocator" value="true" />
+        <param name="bind-core-event-allocator" value="true" />
+
+    </settings>
+
+</configuration>
