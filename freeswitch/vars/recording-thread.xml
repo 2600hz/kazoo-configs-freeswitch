@@ -1,0 +1,3 @@
+<include>
+    <z-PRE-PROCESS cmd="set" data="RECORD_USE_THREAD=false"/>
+</include>

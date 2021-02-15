@@ -7,7 +7,6 @@
     <X-PRE-PROCESS cmd="set" data="recordings_dir=/tmp/"/>
     <X-PRE-PROCESS cmd="set" data="send_silence_when_idle=-1"/>
     <X-PRE-PROCESS cmd="set" data="sdp_m_per_ptime=false"/>
-    <X-PRE-PROCESS cmd="set" data="RECORD_USE_THREAD=false"/>
     <X-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
 
     <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers=P-Test"/>
