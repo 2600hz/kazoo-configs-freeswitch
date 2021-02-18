@@ -1,6 +1,6 @@
 <include>
 
     <X-PRE-PROCESS cmd="set" data="kz_put_expect_100_timeout_ms=5000"/>
-    <X-PRE-PROCESS cmd="set" data="kz_put_use_curl_http_version=CURL_HTTP_VERSION_2_PRIOR_KNOWLEDGE"/>
+    <X-PRE-PROCESS cmd="set" data="kz_put_use_curl_http_version=CURL_HTTP_VERSION_1_1"/>
 
 </include>
