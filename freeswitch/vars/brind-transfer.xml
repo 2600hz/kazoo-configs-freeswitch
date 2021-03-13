@@ -1,0 +1,14 @@
+<include>
+
+    <!--
+        when the originator transfers an outbound call we need to reset fail_on_single_reject
+        example:
+            A calls offnet, fail_on_single_reject is set on leg B so that we don't retry carriers
+            reasons set may include BUSY
+            A transfers the outgoing call to another extension/user
+            if extension/user has a device in DND it will return BUSY and will hit fail_on_single_reject
+            resetting the fail_on_single_reject on blind trasfer supports this callflow
+    -->
+    <X-PRE-PROCESS cmd="set" data="execute_on_blind_transfer_zz=set fail_on_single_reject="/>
+
+</include>
