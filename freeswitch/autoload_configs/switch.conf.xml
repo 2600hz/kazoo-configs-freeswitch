@@ -49,7 +49,8 @@
 
         <param name="use-get-hostname-by-name" value="true"/>
         <param name="dialplan-timestamps" value="true" />
-        <param name="events-use-dispatch" value="false"/>
+        <param name="events-use-dispatch" value="true"/>
+        <param name="initial-event-threads" value="4"/>
         <param name="caller-profile-soft-variables-uses-prefix" value="true"/>
         <param name="caller-profile-soft-lookup-values" value="true"/>
         <param name="event-channel-enable-hierarchy-deliver" value="true"/>
