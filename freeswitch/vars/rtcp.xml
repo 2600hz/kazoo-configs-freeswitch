@@ -1,0 +1,6 @@
+<include>
+
+    <X-PRE-PROCESS cmd="set" data="rtcp_mux=true"/>
+    <X-PRE-PROCESS cmd="set" data="fire_rtcp_packet_events=true"/>
+
+</include>

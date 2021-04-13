@@ -7,13 +7,11 @@
     <X-PRE-PROCESS cmd="set" data="recordings_dir=/tmp/"/>
     <X-PRE-PROCESS cmd="set" data="send_silence_when_idle=-1"/>
     <X-PRE-PROCESS cmd="set" data="sdp_m_per_ptime=false"/>
-    <X-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
 
     <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers=P-Test"/>
     <X-PRE-PROCESS cmd="set" data="disable_app_log=false" />
 
     <X-PRE-PROCESS cmd="set" data="sofia_suppress_url_encoding=true"/>
-    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,VP8,H263,H264,G722,PCMU,G7221@32000h,G7221@16000h,PCMA,G729,GSM,Speex"/>
 
     <Z-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/callie"/>
     <X-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/allison"/>

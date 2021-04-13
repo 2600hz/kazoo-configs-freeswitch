@@ -1,0 +1,15 @@
+<include>
+    <!--
+        priority in which codecs are applied
+
+        1 - absolute_codec, if set will use this list
+        2.1 - if media_mix_inbound_outbound_codecs is set then all codecs are offered
+        2.2 - if media_mix_inbound_outbound_codecs is NOT set then only the inbound codecs are offered, this prevents transcoding
+    -->
+
+    <!-- this was disabled as the sdp payload gets very large when enabled -->
+    <z-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
+
+    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,VP8,H264,G722,PCMU,G7221@32000h,G7221@16000h,PCMA,G729,GSM,Speex"/>
+
+</include>
