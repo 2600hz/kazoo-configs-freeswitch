@@ -6,6 +6,10 @@
             <!-- Performance -->
             <param name="message-threads" value="10"/>
 
+            <!-- X-FS-Core-UUID Header -->
+            <param name="enable-core-uuid-header" value="true"/>
+
+
             <!-- ACL -->
             <param name="apply-nat-acl" value="rfc1918.auto"/>
             <param name="apply-inbound-acl" value="trusted"/>
