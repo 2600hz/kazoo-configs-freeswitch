@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration name="audio.fork.conf" description="Audio Fork default values">
+    <settings>
+
+        <!-- log values for audio fork
+            values for libwebsockets
+            LLL_INFO
+            LLL_PARSER
+            LLL_HEADER
+            LLL_EXT
+            LLL_CLIENT
+            LLL_LATENCY
+            LLL_DEBUG
+            LLL_ERR
+            LLL_WARN
+            LLL_NOTICE
+        -->
+        <param name="log" value="LLL_ERR|LLL_WARN|LLL_NOTICE" />
+
+        <param name="audio-buffer-secs" value="5" />
+        <param name="service-threads" value="5" />
+        <param name="sub-protocol-name" value="kazoo.audio.fork" />
+
+        <param name="sec-default-user" value="kazoo.audio.fork" />
+        <param name="sec-default-password" value="kazoo.audio.fork" />
+        <param name="sec-default-token" value="Basic user:pass" />
+
+        <param name="ws-keep-alive-timer" value="60" />
+        <param name="ws-keep-alive-probes" value="4" />
+        <param name="ws-keep-alive-interval" value="5" />
+        <param name="ws-keep-alive-timeout" value="5" />
+        <param name="ws-timeout" value="10" />
+        <param name="ws-client-idle-timeout" value="10" />
+
+    </settings>
+
+</configuration>
