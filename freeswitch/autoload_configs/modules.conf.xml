@@ -33,12 +33,17 @@
         <load module="mod_amr"/>
         <load module="mod_ilbc"/>
         <load module="mod_opus"/>
+        <load module="mod_red"/>
+        <load module="mod_ulpfec"/>
+
 
         <!-- File Format Interfaces -->
         <load module="mod_sndfile"/>
         <load module="mod_local_stream"/>
         <load module="mod_tone_stream"/>
         <load module="mod_shout"/>
+        <load module="mod_png"/>
+        <load module="mod_imagick"/>
 
         <!-- Timers -->
 
