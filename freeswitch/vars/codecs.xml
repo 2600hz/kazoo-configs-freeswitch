@@ -2,14 +2,35 @@
     <!--
         priority in which codecs are applied
 
-        1 - absolute_codec, if set will use this list
-        2.1 - if media_mix_inbound_outbound_codecs is set then all codecs are offered
+        1 - absolute_codec, if set it will use that value
+        2.1 - if media_mix_inbound_outbound_codecs is set then originator codecs + outbound_codecs are offered
         2.2 - if media_mix_inbound_outbound_codecs is NOT set then only the inbound codecs are offered, this prevents transcoding
     -->
 
-    <!-- this was disabled as the sdp payload gets very large when enabled -->
-    <z-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
+    <!--
+        this is the setting to prevent transcoding bypass
 
-    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,VP8,H264,G722,PCMU,G7221@32000h,G7221@16000h,PCMA,G729,GSM,Speex"/>
+        this was enabled as devices with empty codec list 
+        were only offered the originator codec
+        to prevent transcoding.
+        this settings will make freeswitch offer the originator codec
+        plus the outbound_codecs list.
+         
+        the sdp payload gets very large when enabled
+        specially for inbound webrtc calls to sip devices
+    -->
+    <X-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
+
+    <!-- deprecating single setting for inbound/outbound -->
+    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264"/>
+
+
+    <!--
+        having inbound_codecs and outbound_codecs separately
+        allows to only send a small codec list for outbound calls when
+        the endpoint codec list is empty
+    -->
+    <X-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9,red,ulpc"/>
+    <X-PRE-PROCESS cmd="set" data="outbound_codecs=G722,PCMU,PCMA"/>
 
 </include>
