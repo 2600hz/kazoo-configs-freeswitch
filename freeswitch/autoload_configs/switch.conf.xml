@@ -56,6 +56,9 @@
         <param name="event-channel-enable-hierarchy-deliver" value="true"/>
         <param name="event-channel-hierarchy-deliver-once" value="true"/>
         <param name="event-channel-log-undeliverable-json" value="true"/>
+        <param name="disable-event-channel-execute" value="true"/>
+        <param name="disable-event-channel-execute-complete" value="true"/>
+        <param name="enable-event-channel-app-execute-complete" value="true"/>
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
