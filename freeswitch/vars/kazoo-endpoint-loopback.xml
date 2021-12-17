@@ -1,0 +1,9 @@
+<include>
+
+    <!-- 
+        exclude loopback cdr for callforward originated from kazoo endpoint
+    -->
+
+    <X-PRE-PROCESS cmd="set" data="kz-endpoint-no-loopback-cdr=true"/>
+
+</include>
