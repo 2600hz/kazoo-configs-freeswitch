@@ -1,5 +1,5 @@
 <include>
 
-  <X-PRE-PROCESS cmd="set" data="core_video_blank_image=$${conf_dir}/images/2600hz.png"/>
+  <X-PRE-PROCESS cmd="set" data="core_video_blank_image=$${conf_dir}/images/muted_video.png"/>
 
 </include>
