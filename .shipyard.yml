@@ -1,5 +1,5 @@
 name: kazoo-configs-freeswitch
-base_branch: origin/master
+base_branch: origin/5.1
 base_core: null
 template: spec.tmpl
 package:
@@ -69,4 +69,4 @@ metapackage:
     name: meta-kazoo-freeswitch
     package: kazoo-configs-freeswitch
     type: required
-    branch: 'master'
+    branch: '5.1'
