@@ -33,8 +33,11 @@
         <load module="mod_amr"/>
         <load module="mod_ilbc"/>
         <load module="mod_opus"/>
+
+        <!--
         <load module="mod_red"/>
         <load module="mod_ulpfec"/>
+        -->
 
 
         <!-- File Format Interfaces -->

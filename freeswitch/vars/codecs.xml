@@ -30,7 +30,8 @@
         allows to only send a small codec list for outbound calls when
         the endpoint codec list is empty
     -->
-    <X-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9,red,ulpc"/>
+    <z-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9,red,ulpfec"/>
+    <X-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9"/>
     <X-PRE-PROCESS cmd="set" data="outbound_codecs=G722,PCMU,PCMA"/>
 
 </include>
