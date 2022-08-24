@@ -7,6 +7,10 @@
         <param name="auto-restart" value="false"/>
         <param name="msg-threads-on-startup" value="1"/>
         <!--<param name="rewrite-multicasted-fs-path" value="to_host"/>-->
+
+        <param name="presence-disable-presence-in-event-binding" value="true"/>
+        <param name="presence-disable-all-event-bindings" value="true"/>
+
     </global_settings>
 
     <profiles>
