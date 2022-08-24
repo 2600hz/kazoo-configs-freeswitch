@@ -47,6 +47,7 @@
         <!--<param name="core-db-dsn" value="fs_core"/>-->
         <!--<param name="core-dbtype" value="MSSQL"/>-->
 
+        <!-- kazoo specific -->
         <param name="use-get-hostname-by-name" value="true"/>
         <param name="dialplan-timestamps" value="true" />
         <param name="events-use-dispatch" value="true"/>
@@ -59,6 +60,22 @@
         <param name="disable-event-channel-execute" value="true"/>
         <param name="disable-event-channel-execute-complete" value="true"/>
         <param name="enable-event-channel-app-execute-complete" value="true"/>
+
+        <!-- resource preservation -->
+        <param name="disable-chat-thread" value="true"/>
+        <param name="enable-msrp" value="false"/>
+
+        <!-- hacking -->
+        <param name="enable-core-event-new-dispatcher" value="true"/>
+        <param name="disable-channel-test-flag-mutex" value="true"/>
+        <param name="disable-rtp-ready-mutex" value="true"/>
+        <param name="core-event-dispatcher-os-yield" value="true"/>
+        <!--<param name="core-event-dispatcher-use-all-cpus" value="true"/>-->
+
+        <!-- testing -->
+        <param name="timer-affinity" value="0"/>
+        <param name="session-thread-pool" value="false"/>
+
     </settings>
     <variables>
         <variable name="loopback_initial_codec" value="PCMU"/>
