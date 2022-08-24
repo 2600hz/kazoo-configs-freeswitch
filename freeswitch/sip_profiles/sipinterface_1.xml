@@ -65,7 +65,7 @@
             <param name="enable-100rel" value="false"/>
             <param name="max-proceeding" value="5000"/>
             <!--<param name="max-calls" value="250"/>-->
-            <param name="track-calls" value="true"/>
+            <param name="track-calls" value="false"/>
             <param name="inbound-use-callid-as-uuid" value="true"/>
             <param name="outbound-use-uuid-as-callid" value="true"/>
             <!--<param name="bind-params" value="transport=udp"/>-->
@@ -75,7 +75,8 @@
             <!--<param name="disable-srv" value="false" />-->
             <!--<param name="disable-naptr" value="false" />-->
             <!--<param name="enable-3pcc" value="true"/>-->
-            <!--<param name="parse-all-invite-headers" value="true"/>-->
+            <param name="parse-all-invite-headers" value="true"/>
+            <param name="auto-invite-100" value="true"/>
 
 
 
@@ -207,10 +208,10 @@
             <!-- Logging / Events -->
             <param name="debug" value="info"/>
             <param name="sip-trace" value="true"/>
+            <param name="sip-trace-filter-options" value="true"/>
             <param name="log-auth-failures" value="true"/>
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
             <param name="fire-transfer-events" value="true"/>
         </settings>
     </profile>
 </include>
-
