@@ -208,6 +208,7 @@
             <!-- Logging / Events -->
             <param name="debug" value="info"/>
             <param name="sip-trace" value="true"/>
+            <param name="sip-capture" value="false"/>
             <param name="sip-trace-filter-options" value="true"/>
             <param name="log-auth-failures" value="true"/>
             <param name="channel-xml-fetch-on-nightmare-transfer" value="true"/>
