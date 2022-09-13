@@ -22,7 +22,7 @@
     <X-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true"/>
 
     <!-- deprecating single setting for inbound/outbound -->
-    <X-PRE-PROCESS cmd="set" data="codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264"/>
+    <X-PRE-PROCESS cmd="set" data="codecs=PCMU,AMR-WB,AMR,OPUS,G723,G7231,G726-16,G726-40,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264"/>
 
 
     <!--
@@ -30,8 +30,8 @@
         allows to only send a small codec list for outbound calls when
         the endpoint codec list is empty
     -->
-    <z-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9,red,ulpfec"/>
-    <X-PRE-PROCESS cmd="set" data="inbound_codecs=OPUS,G723,G7231,G726-16,G726-40,PCMU,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9"/>
-    <X-PRE-PROCESS cmd="set" data="outbound_codecs=G722,PCMU,PCMA"/>
+    <z-PRE-PROCESS cmd="set" data="inbound_codecs=PCMU,AMR-WB,AMR,OPUS,G723,G7231,G726-16,G726-40,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9,red,ulpfec"/>
+    <X-PRE-PROCESS cmd="set" data="inbound_codecs=PCMU,AMR-WB,AMR,OPUS,G723,G7231,G726-16,G726-40,G7221@32000h,G7221@16000h,G722,PCMA,VP8,H264,VP9"/>
+    <X-PRE-PROCESS cmd="set" data="outbound_codecs=PCMU,PCMA,AMR-WB,G722"/>
 
 </include>
