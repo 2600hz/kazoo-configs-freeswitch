@@ -10,6 +10,7 @@
 
         <param name="presence-disable-presence-in-event-binding" value="true"/>
         <param name="presence-disable-all-event-bindings" value="true"/>
+        <!--<param name="disable-url-encoding" value="false"/>-->
 
     </global_settings>
 
