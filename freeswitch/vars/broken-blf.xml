@@ -1,0 +1,12 @@
+<include>
+
+    <!--
+        polycom uses replaces header with monitored extension status set to confirmed
+        this setting applies to all calls with replaces header
+        we may include this as a per-account setting
+
+        to apply, change z-PRE-PROCESS to X-PRE-PROCESS
+    -->
+    <z-PRE-PROCESS cmd="set" data="user-agent-broken-blf-filter=/polycom/i"/>
+
+</include>
