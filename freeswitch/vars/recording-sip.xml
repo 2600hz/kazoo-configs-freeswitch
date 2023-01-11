@@ -1,0 +1,5 @@
+<include>
+
+    <X-PRE-PROCESS cmd="set" data="sip_disable_recording=true"/>
+
+</include>
