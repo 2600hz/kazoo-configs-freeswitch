@@ -1,0 +1,7 @@
+<include>
+
+    <X-PRE-PROCESS cmd="set" data="recording_follow_transfer_per_instance=true"/>
+    <X-PRE-PROCESS cmd="set" data="recording_follow_transfer=true"/>
+    <X-PRE-PROCESS cmd="set" data="recording_follow_attxfer=true"/>
+
+</include>
