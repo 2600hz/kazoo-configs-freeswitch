@@ -4,6 +4,7 @@
     <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://default"/>
     
     <X-PRE-PROCESS cmd="set" data="ignore_display_updates=false"/>
+    <X-PRE-PROCESS cmd="set" data="update_ignore_ua=true"/>
     <X-PRE-PROCESS cmd="set" data="recordings_dir=/tmp/"/>
     <X-PRE-PROCESS cmd="set" data="send_silence_when_idle=-1"/>
 
