@@ -1,0 +1,6 @@
+<include>
+
+    <X-PRE-PROCESS cmd="set" data="ignore_display_updates=false"/>
+    <X-PRE-PROCESS cmd="set" data="update_ignore_ua=true"/>
+
+</include>
