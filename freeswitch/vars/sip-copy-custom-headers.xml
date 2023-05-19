@@ -1,0 +1,17 @@
+<include>
+
+    <!-- 
+        this was moved from defaults.xml
+        value is a | separated list of prefixes
+    -->
+    <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers=P-Test"/>
+
+    <!-- 
+        this prevents custom sip headers from being copied between legs
+        we can now safely set sip_copy_custom_headers to X-|P-
+
+        danger: keep the existing values, add more values to the | separated list
+    -->
+    <X-PRE-PROCESS cmd="set" data="sip_copy_custom_headers_exceptions=X-AUTH|X-FS-|X-CONF-|X-Conference-|Referred-by|P-Early-Media|X-Proxy-"/>
+
+</include>
