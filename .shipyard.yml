@@ -1,6 +1,7 @@
 name: kazoo-configs-freeswitch
-base_branch: origin/master
+custom_files: null
 exposure: private
+base_branch: origin/5.3
 base_core: null
 template: spec.tmpl
 package:
@@ -11,7 +12,7 @@ package:
     build_arch: noarch
     build_requires:
       - rpm-build
-    summary: Kazoo specific configuration for FreeSWITCH
+    summary: 'Kazoo specific configuration for FreeSWITCH'
     description: |
       In the Kazoo platform FreeSWITCH is utilized as simple
       media server, so this configures a minimal number of
@@ -22,7 +23,7 @@ package:
       list or on IRC at #2600hz on FreeNode.
     dist: .el7.centos
     requires:
-      sudo: {}
+      sudo: {  }
     source: '%{_build_tar}'
     prep: '%setup -q'
     install: |
@@ -52,12 +53,15 @@ package:
         - CHANGELOG
         - VERSION
       config:
-        - mode: noreplace
+        -
+          mode: noreplace
           path: /etc/kazoo/freeswitch
-        - mode: noreplace
-          path: /etc/logrotate.d/*freeswitch*
-        - mode: noreplace
-          path: /etc/security/limits.d/*freeswitch*
+        -
+          mode: noreplace
+          path: '/etc/logrotate.d/*freeswitch*'
+        -
+          mode: noreplace
+          path: '/etc/security/limits.d/*freeswitch*'
       path:
         - /usr/sbin/kazoo-freeswitch
         - /usr/lib/systemd/system/kazoo-freeswitch.service
@@ -70,4 +74,5 @@ metapackage:
     name: meta-kazoo-freeswitch
     package: kazoo-configs-freeswitch
     type: required
-    branch: 'master'
+    branch: '5.3'
+dependencies: null
