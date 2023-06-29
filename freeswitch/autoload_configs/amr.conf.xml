@@ -17,5 +17,18 @@
 	  <param name="adjust-bitrate" value="0"/> 
 	  <!-- force OA when originating -->
 	  <param name="force-oa" value="0"/> 
+	  <!-- don't mirror mode-set in SDP answer, but use our own (default-bitrate). -->
+	  <param name="mode-set-overwrite" value="0"/>
+	  <!--
+		default fmtp when not set (AMR not AMR~octect_align=n)
+		if codec is set to AMR single string we can configure how to handle sdp
+		values are
+		- bandwidth-efficient, single codec on sdp with octect-aligned=0
+		- octet-aligned, single codec on sdp with octect-aligned=1
+		- both (or any other string), dual codec on sdp with octect-aligned=0 and 1
+
+		default value "both"
+	  -->
+	  <param name="default-fmtp" value="both"/>
 	</settings>
 </configuration>
