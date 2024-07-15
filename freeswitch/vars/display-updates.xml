@@ -1,6 +1,89 @@
 <include>
 
-    <X-PRE-PROCESS cmd="set" data="ignore_display_updates=false"/>
-    <X-PRE-PROCESS cmd="set" data="update_ignore_ua=false"/>
+    <!--
+        uncomment, change value, save and run `fs_cli -x reloadxml` to apply
+
+        values set here are global values
+        that are applied to all channels when they are not explicitly set on the channel
+
+        important note about 'X-PRE-PROCESS'
+        freeswitch preprocessor still applies x-pre-processs elements even when they are inside a commented block
+
+    -->
+
+    <!--
+        Ignore Display Updates
+
+        default is false
+        note: kazoo will set to true on the carrier channel
+
+     -->
+
+    <!--X-PRE-PROCESS cmd="set" data="ignore_display_updates=false"/-->
+
+
+    <!--
+        ignore the check for UPDATE in the `Allowed` header
+
+        FreeSWITCH will send UPDATES only to UAs that send the 'Allowed' header with UPDATE
+
+        some UAs don't report the 'allowed' verbs or the header is stripped by proxies
+        this setting allows to bypass this check
+
+        update_ignore_allowed: true or false, default false
+
+        update_ignore_allowed_regex: regex, default empty
+            if update_ignore_allowed is false will set update_ignore_allowed to true for the UAs that fit the regex
+
+        update_ignore_allowed_exceptions_regex: regex, default empty
+            if update_ignore_allowed is true set update_ignore_allowed to false for the UAs that fit the regex
+
+    -->
+
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_allowed=false"/-->
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_allowed_regex=ua1|ua2"/-->
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_allowed_exceptions_regex=ua1|ua2"/-->
+
+
+
+    <!--
+        Update Ignore UA
+
+        if the evaluation of update_ignore_allowed settings is true
+        FreeSWITCH sends the UPDATE only to known and hard coded devices
+
+        rule coded inside freeswitch
+
+            switch_stristr("polycom", ua) ||
+            (switch_stristr("aastra", ua) && !switch_stristr("Intelligate", ua)) ||
+            switch_stristr("cisco/spa50", ua) ||
+            switch_stristr("cisco/spa525", ua) ||
+            switch_stristr("cisco/spa30", ua) ||
+            switch_stristr("Fanvil", ua) ||
+            switch_stristr("Grandstream", ua) ||
+            switch_stristr("Yealink", ua) ||
+            switch_stristr("Mitel", ua) ||
+            switch_stristr("Panasonic", ua)
+
+        switch_stristr(A., B) finds the string A inside B ignoring capitalization
+
+        these settings allow to override that check
+        history sets the allowed UAs allow adding or ignore the check for UPDATE in the `Allowed` header
+
+        some UAs don't report the 'allowed' verbs or the header is stripped by proxies
+        this setting allows to bypass this check
+
+        update_ignore_ua: true or false, default false
+
+        update_ignore_ua_regex: regex, default empty
+            if update_ignore_ua is false will set update_ignore_ua to true for the UAs that fit the regex
+
+        update_ignore_ua_exceptions_regex: regex, default empty
+            if update_ignore_ua is true set update_ignore_ua to true for the UAs that fit the regex
+
+    -->
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua=false"/-->
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua_regex=ua1|ua2"/-->
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua_exceptions_regex=ua1|ua2"/>
 
 </include>
