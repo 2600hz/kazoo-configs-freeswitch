@@ -67,8 +67,8 @@
 
         <!-- hacking -->
         <param name="enable-core-event-new-dispatcher" value="true"/>
-        <param name="disable-channel-test-flag-mutex" value="true"/>
-        <param name="disable-rtp-ready-mutex" value="true"/>
+        <param name="disable-channel-test-flag-mutex" value="false"/>
+        <param name="disable-rtp-ready-mutex" value="false"/>
         <param name="core-event-dispatcher-os-yield" value="true"/>
         <!--<param name="core-event-dispatcher-use-all-cpus" value="true"/>-->
 
