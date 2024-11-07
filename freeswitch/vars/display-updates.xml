@@ -83,7 +83,7 @@
 
     -->
     <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua=false"/-->
-    <X-PRE-PROCESS cmd="set" data="update_ignore_ua_regex=polyedge"/>
+    <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua_regex=ua1|ua2"/-->
     <!--X-PRE-PROCESS cmd="set" data="update_ignore_ua_exceptions_regex=ua1|ua2"/>
 
 </include>
