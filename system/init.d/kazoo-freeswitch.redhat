@@ -1,52 +1,95 @@
 #!/bin/bash
-#
-#		/etc/rc.d/init.d/freeswitch
-#
-#		The FreeSWITCH Open Source Voice Platform
-#
-#  chkconfig: 345 89 14
-#  description: Starts and stops the freeswitch server daemon
-#  processname: freeswitch
-#  config: /etc/kazoo/freeswitch/freeswitch.xml
-#  pidfile: /var/run/freeswitch/kazoo-freeswitch.pid
-#
 
-RETVAL=0
-LOCK_FILE=/var/lock/subsys/kazoo-freeswitch
+if [ -f /etc/default/freeswitch ]; then
+		. /etc/default/freeswitch
+fi
 
-. /etc/init.d/functions
+if [ -f /etc/sysconfig/freeswitch ]; then
+	. /etc/sysconfig/freeswitch
+fi
+
+if [ -f /etc/kazoo/freeswitch/env ]; then
+	. /etc/kazoo/freeswitch/env
+fi
+
+RETVAL=1
+USER=${FS_USER:-freeswitch}
+BIN_FILE=${FS_BIN:-/usr/bin/freeswitch}
+PID_FILE=${FS_PID:-/var/run/freeswitch/freeswitch.pid}
+CFG_FILE=${FS_CONFIG:-/etc/kazoo/freeswitch}
+RAM_DISK_SIZE=${RAM_DISK_SIZE:-300m}
+RAM_DISK_ENABLED=${RAM_DISK_ENABLED:-true}
+DB_MOUNTPOINT=${DB_MOUNTPOINT:-true}
+export HOME=${FS_HOME:-/var/lib/kazoo-freeswitch}
+export MALLOC_ARENA_MAX=1
+
+if [ -z "${FREESWITCH_ARGS}" ]; then
+	FREESWITCH_ARGS="-nonat -conf ${CFG_FILE} -run /var/run/freeswitch -db /var/lib/kazoo-freeswitch/db -log /var/log/freeswitch -cache /var/lib/kazoo-freeswitch/cache -sounds /usr/share/kazoo-freeswitch/sounds -storage /var/lib/kazoo-freeswitch/storage"
+fi
+
+prepare() {
+	ram_disk
+	mkdir -p /var/log/freeswitch
+	chown -R ${USER} /var/log/freeswitch
+	mkdir -p /var/lib/kazoo-freeswitch/{cache,storage}
+	chown -R ${USER} /var/lib/kazoo-freeswitch
+	mkdir -p /usr/share/kazoo-freeswitch/sounds
+	chown -R ${USER} /usr/share/kazoo-freeswitch/sounds
+	mkdir -p /var/run/freeswitch
+	chown -R ${USER} /var/run/freeswitch
+	if [ -e ${PID_FILE} ]; then
+		rm -rf ${PID_FILE}
+	fi	
+        RETVAL=$?
+}
+
+ram_disk() {
+	if [ "$RAM_DISK_ENABLED" == "true" ]; then
+		# mount the tempfs is its not already there
+	    if ! mountpoint -q "$DB_MOUNTPOINT"; then
+	        /usr/bin/mkdir -p "$DB_MOUNTPOINT"
+	        /usr/bin/mount -o size="$RAM_DISK_SIZE" -t tmpfs tmpfs "$DB_MOUNTPOINT"
+	    fi
+
+	    # Make sure the current mount is tempfs and if not, unmount/remount it
+	    if [ "$(findmnt -no fstype "$DB_MOUNTPOINT")" != "tmpfs" ]; then
+	        /usr/bin/umount "$DB_MOUNTPOINT"
+	        /usr/bin/mount -o size="$RAM_DISK_SIZE" -t tmpfs tmpfs "$DB_MOUNTPOINT"
+	    fi
+	fi
+}
 
 start() {
-	echo -n "Starting FreeSWITCH: "
-        /usr/sbin/kazoo-freeswitch prepare >/dev/null 2>&1
-        daemon "/usr/sbin/kazoo-freeswitch background >/dev/null"
+	cd ${HOME}
+
+	if fs_cli -x 'status' > /dev/null 2>&1; then
+		echo "FreeSWITCH is already running!"
+		return
+	fi
+
+	set -- ${BIN_FILE} ${FREESWITCH_ARGS} ${FREESWITCH_PARAMS} "$@"
+	if [ "$(whoami)" == "${USER}" ]; then
+		exec "$@"
+	else
+		runuser -s /bin/bash ${USER} -c "$*"
+	fi
 	RETVAL=$?
-        if [ ${RETVAL} -eq 0 ]; then
-                touch ${LOCK_FILE}
-                success $"OK"
-                echo
-        else
-                failure $"FreeSWITCH is already running or failed to start!"
-                echo
-        fi
+
+	if [ ${RETVAL} -ne 0 ]; then
+		echo "Failed to start FreeSWITCH!"
+		RETVAL=1
+	fi
 }
 
 stop() {
-	echo -n "Shutting down FreeSWITCH: "
-	/usr/sbin/kazoo-freeswitch stop >/dev/null 2>&1
+	cd ${HOME}
+	${BIN_FILE} -stop > /dev/null 2>&1
+	killall freeswitch
 	RETVAL=$?
-        if [ ${RETVAL} -eq 0 ]; then
-                rm -f ${LOCK_FILE} ${pidfile}
-                success $"OK"
-                echo
-        else
-                failure $"FreeSWITCH is still running!"
-                echo
-        fi
 }
 
 status() {
-	/usr/sbin/kazoo-freeswitch status
+	fs_cli -x 'status' && fs_cli -x 'erlang status'
 	RETVAL=$?
 }
 
@@ -55,25 +98,44 @@ restart() {
 	start
 }
 
+pause() {
+	fs_cli -x 'fsctl pause'
+}
+
+resume() {
+	fs_cli -x 'fsctl resume'
+}
+
 case "$1" in
-        start)
-                start
-                ;;
-        stop)
-                stop
-                ;;
-        status)
-                status
-                ;;
-        restart|reload)
-                restart
-                ;;
-        condrestart)
-                [ ! -e ${LOCK_FILE} ] && restart
-                ;;
-        *)
-                echo $"Usage: $0 (start|stop|restart|status)"
-                RETVAL=1
+	prepare)
+		prepare
+		;;
+	background)
+		shift
+		start "-ncwait" $@
+		;;
+	start)
+		shift
+		start $@
+		;;
+	stop)
+		stop
+		;;
+	status)
+		status
+		;;
+	restart)
+		restart
+		;;
+	pause)
+		pause
+		;;
+	resume)
+		resume
+		;;
+	*)
+		echo "Usage: freeswitch {prepare|start|background|stop|restart|status|pause|resume}"
+		;;
 esac
 
 exit ${RETVAL}
