@@ -17,6 +17,9 @@ USER=${FS_USER:-freeswitch}
 BIN_FILE=${FS_BIN:-/usr/bin/freeswitch}
 PID_FILE=${FS_PID:-/var/run/freeswitch/freeswitch.pid}
 CFG_FILE=${FS_CONFIG:-/etc/kazoo/freeswitch}
+RAM_DISK_SIZE=${RAM_DISK_SIZE:-300m}
+RAM_DISK_ENABLED=${RAM_DISK_ENABLED:-true}
+DB_MOUNTPOINT=${DB_MOUNTPOINT:-true}
 export HOME=${FS_HOME:-/var/lib/kazoo-freeswitch}
 export MALLOC_ARENA_MAX=1
 
@@ -27,7 +30,8 @@ fi
 prepare() {
 	mkdir -p /var/log/freeswitch
 	chown -R ${USER} /var/log/freeswitch
-	mkdir -p /var/lib/kazoo-freeswitch/{db,cache,storage}
+	mkdir -p /var/lib/kazoo-freeswitch/{cache,storage}
+	ram_disk
 	chown -R ${USER} /var/lib/kazoo-freeswitch
 	mkdir -p /usr/share/kazoo-freeswitch/sounds
 	chown -R ${USER} /usr/share/kazoo-freeswitch/sounds
@@ -37,6 +41,22 @@ prepare() {
 		rm -rf ${PID_FILE}
 	fi	
         RETVAL=$?
+}
+
+ram_disk() {
+	if [ "$RAM_DISK_ENABLED" == "true" ]; then
+		# mount the tempfs is its not already there
+	    if ! mountpoint -q "$DB_MOUNTPOINT"; then
+	        /usr/bin/mkdir -p "$DB_MOUNTPOINT"
+	        /usr/bin/mount -o size="$RAM_DISK_SIZE" -t tmpfs tmpfs "$DB_MOUNTPOINT"
+	    fi
+
+	    # Make sure the current mount is tempfs and if not, unmount/remount it
+	    if [ "$(findmnt -no fstype "$DB_MOUNTPOINT")" != "tmpfs" ]; then
+	        /usr/bin/umount "$DB_MOUNTPOINT"
+	        /usr/bin/mount -o size="$RAM_DISK_SIZE" -t tmpfs tmpfs "$DB_MOUNTPOINT"
+	    fi
+	fi
 }
 
 start() {
