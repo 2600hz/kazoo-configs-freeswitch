@@ -1,6 +1,6 @@
 <!--тестовые файлы Вы звуковые файлы можно взять тут svn co http://svn.freeswitch.ru/bbv/mod_say_ru/ru/  -->
 <include>
-  <language name="ru" sound-prefix="$${sounds_dir}/ru/RU/elena" tts-engine="cepstral" tts-voice="elena">
+  <language name="ru-ru" say-module="ru" sound-prefix="$${sounds_dir}/ru/ru/elena" tts-engine="cepstral" tts-voice="elena">
     <phrases>
       <macros>
         <X-PRE-PROCESS cmd="include" data="demo/*.xml"/> <!-- Note: this now grabs whole subdir, previously grabbed only demo.xml -->
