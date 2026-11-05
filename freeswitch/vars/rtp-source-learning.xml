@@ -1,0 +1,21 @@
+<include>
+
+    <!-- rtp source learning (auto-adjust), CVE-2026-119293 / CVE-2026-119292
+        read when an RTP session is created: these globals are the default,
+        a channel variable overrides them for that channel; 0 turns them off.
+        builds without the patch ignore them.
+
+        rtp_auto_adjustment_wait_for_advertised_ms
+            keep the auto-adjust window open this long after the last
+            adjustment, unless a packet comes from the IP in the SDP, which
+            is adopted at once and closes the window.
+
+        rtp_packet_not_advertised_reject_threshold
+            while the window is open, drop the packets of a source IP that
+            is not the one in the SDP once it sends this many per ptime
+            (5 or more).
+    -->
+    <X-PRE-PROCESS cmd="set" data="rtp_auto_adjustment_wait_for_advertised_ms=3000"/>
+    <X-PRE-PROCESS cmd="set" data="rtp_packet_not_advertised_reject_threshold=5"/>
+
+</include>
