@@ -9,6 +9,9 @@
 
         <!-- Event Handlers -->
         <load module="mod_event_socket"/>
+        <!-- keep mod_kazoo before mod_commands and mod_dptools: core variables
+             set when it loads, such as disable_system_app_commands, are only
+             read by them when they load -->
         <load module="mod_kazoo" />
 
         <!-- Directory Interfaces -->
