@@ -1,5 +1,6 @@
 <include>
     <X-PRE-PROCESS cmd="set" data="disable_system_api_commands=true"/>
+    <X-PRE-PROCESS cmd="set" data="disable_system_app_commands=true"/>
 
     <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://default"/>
 
